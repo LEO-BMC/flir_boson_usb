@@ -21,7 +21,7 @@
   <!-- location of the camera calibration file -->
   <arg name="camera_info_url" default="package://flir_boson_usb/example_calibrations/Boson640.yaml"/>
 
-  <node pkg="flir_boson_usb" type="flir_boson_usb_node" name="flir_boson_usb_node" ns="$(arg namespace)">
+  <node pkg="flir_boson_usb" type="flir_boson_usb_node" name="flir_boson_usb_node" ns="$(arg namespace)" output="screen">
     <param name="frame_id" type="str" value="$(arg frame_id)"/>
     <param name="dev" type="str" value="$(arg dev)"/>
     <param name="frame_rate" type="double" value="$(arg frame_rate)"/>

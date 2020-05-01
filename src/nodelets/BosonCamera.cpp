@@ -406,9 +406,10 @@ void BosonCamera::captureAndPublish(const ros::TimerEvent& evt)
     // ---------------------------------
     // DATA in YUV
     cvtColor(thermal_luma, thermal_rgb, COLOR_YUV2GRAY_I420, 0);
-
-    cv_img.image = thermal_rgb;
-    cv_img.encoding = "mono8";
+    cv::Mat image_color;
+    cvtColor(thermal_rgb, image_color, COLOR_GRAY2BGR);
+    cv_img.image = image_color;
+    cv_img.encoding = "bgr8";
     cv_img.header.stamp = ros::Time::now();
     cv_img.header.frame_id = frame_id;
     pub_image = cv_img.toImageMsg();
